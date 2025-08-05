@@ -1,0 +1,19 @@
+.GPT-container {
+  color: white;
+}
+
+#GPT-button {
+  position: sticky;
+  bottom: 0; /* Sticks to the bottom of the container */
+  padding: 10px;
+  text-align: center;
+  border: 1px solid white;
+}
+
+.chatGPT-response {
+  text-align: left; /* center text horizontally */
+  border: 2px solid #fff; /* white border */
+  /* border-radius: 1rem; rounded corners */
+  min-height: 300px;
+  color: white;
+}
