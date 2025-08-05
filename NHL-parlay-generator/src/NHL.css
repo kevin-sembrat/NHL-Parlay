@@ -16,3 +16,8 @@ p.selectable.selected {
 .selected-items {
   line-height: 1.2;
 }
+
+svg{
+  justify-self: start;
+}
+

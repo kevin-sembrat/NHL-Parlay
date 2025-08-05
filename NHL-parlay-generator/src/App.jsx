@@ -4,26 +4,37 @@ import { NHL } from "./NHL";
 import { GPT } from "./GPT";
 
 function App() {
+  //OverUnder Records
   const [selectedPlayers, setSelectedPlayers] = useState([]);
+  //MoneyLine Records
+  const [gameMoneyLines, setGameMoneyLines] = useState([]);
 
   return (
     <>
       <section className="home-page">
         <div className="NHL">
-          <label htmlFor="bet-type">Choose bet type: </label>
-          <select id="bet-type" name="bet-type">
-            <option value="over-under">Over/Under</option>
-            <option value="spreads">Spreads</option>
-            <option value="moneyline">Moneyline</option>
-          </select>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24px"
+            viewBox="0 -960 960 960"
+            width="24px"
+            fill="#e3e3e3"
+          >
+            <path d="M80-160v-120q0-17 11.5-28.5T120-320h40v160H80Zm120 0v-160h160l34-78 64 140-34 76q-5 11-15 16.5t-21 5.5H200Zm600 0v-160h40q17 0 28.5 11.5T880-280v120h-80Zm-40 0H572q-11 0-21-5.5T536-182L254-800h134l92 208 92-208h134L544-446l56 126h160v160Z" />
+          </svg>
           <NHL
             selectedPlayers={selectedPlayers}
             setSelectedPlayers={setSelectedPlayers}
+            gameMoneyLines={gameMoneyLines}
+            setGameMoneyLines={setGameMoneyLines}
           />
         </div>
         <div className="GPT">
           {/* <p>Chat GPT Responses go here...</p> */}
-          <GPT selectedPlayers={selectedPlayers} />
+          <GPT
+            selectedPlayers={selectedPlayers}
+            gameMoneyLines={gameMoneyLines}
+          />
         </div>
       </section>
     </>

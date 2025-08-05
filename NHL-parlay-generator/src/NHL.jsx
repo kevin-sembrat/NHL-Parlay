@@ -1,51 +1,63 @@
-import { useState, useEffect } from "react";
-import App from "./App";
+import { useState } from "react";
 import "./NHL.css";
+import { OverUnder } from "./OverUnder";
+import { Moneyline } from "./Moneyline";
 
-let responses = [
-  { player: "Connor McDavid", propBet: "Over/Under 1.5 Total Assists" },
-  { player: "Igor Shesterkin ", propBet: "Over/Under 28.5 Saves" },
-  { player: "Alex Ovechkin", propBet: "Over/Under 0.5 Goals" },
-  { player: "Auston Matthews", propBet: "Over/Under 1.5 Total Goals" },
-];
+export const NHL = ({
+  selectedPlayers,
+  setSelectedPlayers,
+  gameMoneyLines,
+  setGameMoneyLines,
+  props,
+}) => {
+  const [betType, setBetType] = useState("moneyline");
 
-export const NHL = ({ selectedPlayers, setSelectedPlayers, props }) => {
-  const highlightPlayer = (playerAndPropBet) => {
-    // console.log(propBet);
-    // console.log(typeof player);
-    setSelectedPlayers(
-      (existing) =>
-        existing.includes(playerAndPropBet)
-          ? existing.filter((p) => p !== playerAndPropBet) // deselect
-          : [...existing, playerAndPropBet] // select
-    );
+  const changeBetType = (e) => {
+    setBetType(e.target.value);
   };
 
   return (
-    <div>
-      <div className="selected-menu">
-        {responses.map(({ player, propBet }) => (
-          <p
-            key={player + " " + propBet}
-            className={`selectable ${
-              selectedPlayers.includes(player + " " + propBet) ? "selected" : ""
-            }`}
-            onClick={() => highlightPlayer(player + " " + propBet)}
-            // style={{ fontSize: defaultSize }}
-          >
-            {player} - {propBet}
-          </p>
-        ))}
-      </div>
+    <>
+      {/* Your selector, now controlled */}
+      <label htmlFor="bet-type">Choose bet type: </label>
+      <select
+        id="bet-type"
+        name="bet-type"
+        value={betType}
+        onChange={changeBetType}
+      >
+        <option value="over-under">Over/Under</option>
+        <option value="spreads">Spreads</option>
+        <option value="moneyline">Moneyline</option>
+      </select>
 
-      <h3>Parlay Legs:</h3>
-      <div className="selected-items">
-        <ol>
-          {selectedPlayers.map((player) => (
-            <li key={player}>{player}</li>
-          ))}
-        </ol>
-      </div>
-    </div>
+      <hr />
+
+      {betType === "over-under" && (
+        <OverUnder
+          selectedPlayers={selectedPlayers}
+          setSelectedPlayers={setSelectedPlayers}
+        />
+      )}
+
+      {betType === "moneyline" && (
+        <Moneyline
+          gameMoneyLines={gameMoneyLines}
+          setGameMoneyLines={setGameMoneyLines}
+        />
+      )}
+      {/* {betType === "spreads"     && <Spreads />} */}
+
+      {/* <label htmlFor="bet-type">Choose bet type: </label>
+      <select id="bet-type" name="bet-type">
+        <option value="over-under">Over/Under</option>
+        <option value="spreads">Spreads</option>
+        <option value="moneyline">Moneyline</option>
+      </select>
+      <OverUnder
+        selectedPlayers={selectedPlayers}
+        setSelectedPlayers={setSelectedPlayers}
+      /> */}
+    </>
   );
 };
