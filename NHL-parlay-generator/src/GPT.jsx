@@ -10,8 +10,9 @@ export const GPT = ({ selectedPlayers }) => {
   // const [responseFromGPT, setResponseFromGPT] = useState("For Igor Shesterkin, considering his performance trends and the opposing team's offensive capabilities, the *Over 28.5 Saves* could be a strong pick if he’s expected to face a high volume of shots. For Alex Ovechkin, with a history of goal-scoring and his role on the power play, the *Over 0.5 Goals* might also be a favorable choice, especially if the opposing defense is weaker or if he has been in good form recently. Between the two, both picks have merit, but the *Over 0.5 Goals for Ovechkin* may statistically have a slightly higher probability of being correct given his scoring consistency.");
 
   const openai = new OpenAI({
-    apiKey:
-      "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",
+    //Re-add API Key:
+    // HERE
+    /////////////
     dangerouslyAllowBrowser: true,
   });
 
