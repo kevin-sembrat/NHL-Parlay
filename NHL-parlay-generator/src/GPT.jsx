@@ -13,8 +13,7 @@ export const GPT = ({ selectedPlayers, gameMoneyLines }) => {
 
   const openai = new OpenAI({
     //Re-add API Key:
-    apiKey:
-      "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",
+
     /////////////
     dangerouslyAllowBrowser: true,
   });
