@@ -34,14 +34,14 @@ export const OverUnder = ({ selectedPlayers, setSelectedPlayers, props }) => {
         ))}
       </div>
 
-      <h3>Parlay Legs:</h3>
+      {/* <h3>Parlay Legs:</h3>
       <div className="selected-items">
         <ol>
           {selectedPlayers.map((player) => (
             <li key={player}>{player}</li>
           ))}
         </ol>
-      </div>
+      </div> */}
     </div>
   );
 };

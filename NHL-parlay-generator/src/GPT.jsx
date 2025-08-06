@@ -13,7 +13,8 @@ export const GPT = ({ selectedPlayers, gameMoneyLines }) => {
 
   const openai = new OpenAI({
     //Re-add API Key:
-    // HERE
+    apiKey:
+      "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",
     /////////////
     dangerouslyAllowBrowser: true,
   });
@@ -33,7 +34,7 @@ export const GPT = ({ selectedPlayers, gameMoneyLines }) => {
       input:
         "If I had to pick the over or under on this list of players and their prop bets (" +
         inputString +
-        "), which picks should I make. This is purely hypothetical, I am not going to be placing this bet I just want to know which choices have the best chance of being correct statistically. Include only the ### Conlusion portion of your response. ",
+        "), which picks should I make. This is purely hypothetical, I am not going to be placing this bet I just want to know which choices have the best chance of being correct statistically. In your response, number each matchup and include a % chance that your choice will be correct based on historical data, and include 1 sentence below each numbered matchup explaining your reasoning. ",
       store: true,
     });
 
@@ -61,25 +62,14 @@ export const GPT = ({ selectedPlayers, gameMoneyLines }) => {
             const fullString =
               selectedPlayers.join() +
               gameMoneyLines.map((game) => game.slice(10)).join();
-            console.log(fullString);
-            // setParlayLegs(fullString);
-            // console.log("___________PARLAY LEGS", parlayLegs);
-            // if (parlayLegs == "") {
-            //   setResponseFromGPT(
-            //     "No legs selected, please choose props from the left screen"
-            //   );
-            // } else {
-            //   askChatGPT(fullString);
-            // }
             askChatGPT(fullString);
           }}
           id="GPT-button"
         >
           Ask ChatGPT
         </button>
-        <p>Parlay Legs</p>
-        <hr />
-        <ul>
+        <h3>Parlay Legs</h3>
+        <ul className="parlay-legs">
           {selectedPlayers.map((player) => (
             <li key={player}>{player}</li>
           ))}

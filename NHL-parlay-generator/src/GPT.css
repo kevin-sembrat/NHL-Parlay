@@ -22,3 +22,10 @@
   color: white;
 }
 
+.parlay-legs {
+  list-style-type: none;
+}
+
+h3 {
+  padding-top: 50px;
+}

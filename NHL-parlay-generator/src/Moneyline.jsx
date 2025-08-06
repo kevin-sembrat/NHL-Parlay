@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+// import { Data} from "./Data";
 
 let responses = [
   {
@@ -14,9 +15,12 @@ let responses = [
   },
 ];
 
-// { player: "Auston Matthews", propBet: "Over/Under 1.5 Total Goals" },
-
-export const Moneyline = ({ gameMoneyLines, setGameMoneyLines, props }) => {
+export const Moneyline = ({
+  gameMoneyLines,
+  setGameMoneyLines,
+  moneyLineData,
+  props,
+}) => {
   const highlightPlayer = (gameId) => {
     // console.log(propBet);
     // console.log(typeof player);
@@ -30,9 +34,8 @@ export const Moneyline = ({ gameMoneyLines, setGameMoneyLines, props }) => {
 
   return (
     <div>
-      MONEYLINE
       <div className="selected-menu">
-        {responses.map(({ gameId, homeTeam, awayTeam }) => (
+        {moneyLineData.map(({ gameId, homeTeam, awayTeam }) => (
           <p
             key={`${gameId} ${homeTeam.name} (${homeTeam.oddsML}) vs ${awayTeam.name} (${awayTeam.oddsML})`}
             className={`selectable ${
@@ -53,14 +56,15 @@ export const Moneyline = ({ gameMoneyLines, setGameMoneyLines, props }) => {
           </p>
         ))}
       </div>
-      <h3>Parlay Legs:</h3>
+      {/* <Data /> */}
+      {/* <h3>Parlay Legs:</h3>
       <div className="selected-items">
         <ol>
           {gameMoneyLines.map((game) => (
             <li key={game}>{game.slice(10)}</li>
           ))}
         </ol>
-      </div>
+      </div> */}
     </div>
   );
 };
